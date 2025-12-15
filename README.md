@@ -4,6 +4,9 @@ A modern **Electronic Medical Record (EMR) Appointment Management System** built
 The application provides a clean dashboard to view, filter, and manage patient appointments efficiently.
 
 ---
+<img width="500" height="800" alt="Screenshot 2025-12-16 at 04 48 25" src="https://github.com/user-attachments/assets/40f66070-24a9-4e51-a570-f8dc82d819ad" />
+<img width="500" height="800" alt="Screenshot 2025-12-16 at 04 48 37" src="https://github.com/user-attachments/assets/37351f7c-5aeb-4898-a35a-277d00ff557c" />
+
 
 ## ✨ Features
 
