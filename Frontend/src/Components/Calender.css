@@ -1,26 +1,18 @@
-.calendar {
+.calendar-wrapper {
   margin-bottom: 20px;
+  padding: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-.calendar h4 {
-  margin-bottom: 10px;
+.react-calendar {
+  border: none;
+  width: 100%;
 }
 
-.calendar-dates {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.calendar-date {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  cursor: pointer;
-}
-
-.calendar-date.selected {
-  background: #2563eb;
-  color: #ffffff;
+.react-calendar__tile--active {
+  background: #2563eb !important;
+  color: white;
+  border-radius: 8px;
 }

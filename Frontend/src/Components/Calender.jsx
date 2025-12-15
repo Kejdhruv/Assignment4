@@ -1,34 +1,20 @@
 import React from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import "./Calender.css";
 
-const Calendar = ({ selectedDate, onDateSelect }) => {
-  const today = new Date();
-
-  const dates = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date();
-    d.setDate(today.getDate() + i);
-    return d.toISOString().split("T")[0];
-  });
-
+const AppointmentCalendar = ({ selectedDate, onDateSelect }) => {
   return (
-    <div className="calendar">
-      <h4>Select Date</h4>
-
-      <div className="calendar-dates">
-        {dates.map((date) => (
-          <button
-            key={date}
-            className={`calendar-date ${
-              selectedDate === date ? "selected" : ""
-            }`}
-            onClick={() => onDateSelect(date)}
-          >
-            {date}
-          </button>
-        ))}
-      </div>
+    <div className="calendar-wrapper">
+      <Calendar
+        value={selectedDate}
+        onChange={(date) => {
+          // date is a JS Date object (correct)
+          onDateSelect(date);
+        }}
+      />
     </div>
   );
 };
 
-export default Calendar;
+export default AppointmentCalendar; 

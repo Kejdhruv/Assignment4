@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EMR.css";
 import AppointmentCard from "../Components/Appointment_Card";
 import Tabs from "../Components/Tabs"
-import Calender from "../Components/Calender"
+import AppointmentCalendar from "../components/Calender";
 
 const API_BASE = "http://127.0.0.1:8000";
 
@@ -14,9 +14,7 @@ const EMR_Frontend_Assignment = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // -------------------------
   // INITIAL DATA FETCH
-  // -------------------------
   useEffect(() => {
     fetch(`${API_BASE}/appointments`)
       .then((res) => res.json())
@@ -31,9 +29,7 @@ const EMR_Frontend_Assignment = () => {
       });
   }, []);
 
-  // -------------------------
   // TAB FILTERING
-  // -------------------------
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setSelectedDate(null);
@@ -54,15 +50,17 @@ const EMR_Frontend_Assignment = () => {
   // -------------------------
   // CALENDAR FILTERING
   // -------------------------
-  const handleDateSelect = (date) => {
-    setSelectedDate(date);
-    setActiveTab("");
+const handleDateSelect = (dateObj) => {
+  setSelectedDate(dateObj);
+  setActiveTab("");
 
-    fetch(`${API_BASE}/appointments?date=${date}`)
-      .then((res) => res.json())
-      .then((data) => setAppointments(data));
-  };
+  // Format date safely (local date, no timezone bug)
+  const formattedDate = dateObj.toLocaleDateString("en-CA");
 
+  fetch(`${API_BASE}/appointments?date=${formattedDate}`)
+    .then((res) => res.json())
+    .then((data) => setAppointments(data));
+};
   // -------------------------
   // STATUS UPDATE
   // -------------------------
@@ -100,10 +98,10 @@ const EMR_Frontend_Assignment = () => {
         <Tabs activeTab={activeTab} onTabChange={handleTabChange} />
 
         {/* Calendar */}
-        <Calender
-          selectedDate={selectedDate}
-          onDateSelect={handleDateSelect}
-        />
+     <AppointmentCalendar
+  selectedDate={selectedDate}
+  onDateSelect={handleDateSelect}
+/>
 
         {/* Appointment List */}
         {appointments.length === 0 && (
