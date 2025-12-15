@@ -48,7 +48,7 @@ const AppointmentCard = ({ appointment, onStatusChange }) => {
           {appointment.status}
         </span>
 
-       <div className="action-buttons">
+        <div className="action-buttons">
   <button
     className="schedule-btn"
     onClick={() => onStatusChange(appointment.id, "Confirmed")}

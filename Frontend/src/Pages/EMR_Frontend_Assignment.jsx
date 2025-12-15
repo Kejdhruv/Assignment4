@@ -125,10 +125,10 @@ const EMR_Frontend_Assignment = () => {
     </div>
   </div>
 
-  <div className="stat-card" onClick={() => filterByStatus("Scheduled")}>
+  <div className="stat-card" onClick={() => filterByStatus("Completed")}>
     <div className="stat-content">
-      <h2>{count("Scheduled")}</h2>
-      <p>Scheduled Appointments</p>
+      <h2>{count("Completed")}</h2>
+      <p>Completed Appointments</p>
     </div>
     <div className="icon-box scheduled">
       <FaCalendarAlt />
