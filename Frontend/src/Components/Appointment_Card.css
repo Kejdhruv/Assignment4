@@ -69,3 +69,64 @@
   background: #ffffff;
   cursor: pointer;
 }
+
+/* ---------- META LINE ---------- */
+.meta-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Small inline icons */
+.meta-icon {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Separator dot */
+.dot {
+  margin: 0 6px;
+  color: #cbd5e1;
+}
+
+/* ---------- ACTION BUTTON ICON ---------- */
+.btn-icon {
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+/* Cancel button refinement */
+.cancel-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.action-buttons button {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* Shared icon style */
+.btn-icon {
+  font-size: 12px;
+  margin-right: 6px;
+  color: #64748b;
+}
+
+/* Individual button tone tweaks (subtle) */
+.schedule-btn .btn-icon {
+  color: #6366f1;
+}
+
+.cancel-btn .btn-icon {
+  color: #ef4444;
+}
+
+.complete-btn .btn-icon {
+  color: #22c55e;
+}
