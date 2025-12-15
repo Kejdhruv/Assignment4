@@ -21,6 +21,7 @@ const EMR_Frontend_Assignment = () => {
 
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedDate, setSelectedDate] = useState(null);
+const todayDate = new Date().toLocaleDateString("en-CA");
 
   // -------------------------
   // FETCH ALL APPOINTMENTS
@@ -49,6 +50,24 @@ const EMR_Frontend_Assignment = () => {
       setAppointments(allAppointments.filter(a => a.status === status));
     }
   };
+
+  const filterByTab = (tab) => {
+  setActiveFilter(tab);
+  setSelectedDate(null);
+
+  if (tab === "All") {
+    setAppointments(allAppointments);
+  } 
+  else if (tab === "Today") {
+    setAppointments(allAppointments.filter(a => a.date === todayDate));
+  } 
+  else if (tab === "Upcoming") {
+    setAppointments(allAppointments.filter(a => a.date > todayDate));
+  } 
+  else if (tab === "Past") {
+    setAppointments(allAppointments.filter(a => a.date < todayDate));
+  }
+};
 
   // -------------------------
   // FILTER BY DATE (CALENDAR)
@@ -153,10 +172,10 @@ const EMR_Frontend_Assignment = () => {
 
             <div className="appointments-header">
               <Tabs
-                activeTab={activeFilter}
-                onTabChange={filterByStatus}
-                showAll
-              />
+  activeTab={activeFilter}
+  onTabChange={filterByTab}
+  showAll
+/>
             </div>
 
             {appointments.length === 0 && (

@@ -17,7 +17,7 @@ appointments = [
     {
         "id": 2,
         "name": "Anita Verma",
-        "date": "2025-01-20",
+        "date": "2025-12-20",
         "time": "11:00 AM",
         "duration": 20,
         "doctorName": "Dr. Mehta",
@@ -27,7 +27,7 @@ appointments = [
     {
         "id": 3,
         "name": "Karan Singh",
-        "date": "2025-01-18",
+        "date": "2025-12-23",
         "time": "02:00 PM",
         "duration": 15,
         "doctorName": "Dr. Rao",
@@ -37,7 +37,7 @@ appointments = [
     {
         "id": 4,
         "name": "Neha Patel",
-        "date": "2025-01-19",
+        "date": "2025-12-19",
         "time": "09:30 AM",
         "duration": 45,
         "doctorName": "Dr. Rao",
@@ -47,7 +47,7 @@ appointments = [
     {
         "id": 5,
         "name": "Aman Gupta",
-        "date": "2025-01-21",
+        "date": "2025-12-27",
         "time": "01:00 PM",
         "duration": 30,
         "doctorName": "Dr. Khanna",
@@ -57,7 +57,7 @@ appointments = [
     {
         "id": 6,
         "name": "Simran Kaur",
-        "date": "2025-01-17",
+        "date": "2025-12-18",
         "time": "03:00 PM",
         "duration": 20,
         "doctorName": "Dr. Khanna",
@@ -67,7 +67,7 @@ appointments = [
     {
         "id": 7,
         "name": "Rohit Jain",
-        "date": "2025-01-16",
+        "date": "2025-12-16",
         "time": "12:00 PM",
         "duration": 25,
         "doctorName": "Dr. Mehta",
