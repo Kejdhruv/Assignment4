@@ -93,41 +93,49 @@ const EMR_Frontend_Assignment = () => {
       <div className="emr-container">
 
         {/* ===== DASHBOARD CARDS ===== */}
-        <div className="stats-container">
+       <div className="stats-container">
 
-          <div className="stat-card confirmed" onClick={() => filterByStatus("Confirmed")}>
-            <div>
-              <h4>Confirmed</h4>
-              <p>{count("Confirmed")}</p>
-            </div>
-            <FaCheckCircle size={30} />
-          </div>
+  <div className="stat-card" onClick={() => filterByStatus("Confirmed")}>
+    <div className="stat-content">
+      <h2>{count("Confirmed")}</h2>
+      <p>Confirmed Appointments</p>
+    </div>
+    <div className="icon-box confirmed">
+      <FaCheckCircle />
+    </div>
+  </div>
 
-          <div className="stat-card cancelled" onClick={() => filterByStatus("Cancelled")}>
-            <div>
-              <h4>Cancelled</h4>
-              <p>{count("Cancelled")}</p>
-            </div>
-            <FaTimesCircle size={30} />
-          </div>
+  <div className="stat-card" onClick={() => filterByStatus("Cancelled")}>
+    <div className="stat-content">
+      <h2>{count("Cancelled")}</h2>
+      <p>Cancelled Appointments</p>
+    </div>
+    <div className="icon-box cancelled">
+      <FaTimesCircle />
+    </div>
+  </div>
 
-          <div className="stat-card upcoming" onClick={() => filterByStatus("Upcoming")}>
-            <div>
-              <h4>Upcoming</h4>
-              <p>{count("Upcoming")}</p>
-            </div>
-            <FaClock size={30} />
-          </div>
+  <div className="stat-card" onClick={() => filterByStatus("Upcoming")}>
+    <div className="stat-content">
+      <h2>{count("Upcoming")}</h2>
+      <p>Upcoming Appointments</p>
+    </div>
+    <div className="icon-box upcoming">
+      <FaClock />
+    </div>
+  </div>
 
-          <div className="stat-card scheduled" onClick={() => filterByStatus("Scheduled")}>
-            <div>
-              <h4>Scheduled</h4>
-              <p>{count("Scheduled")}</p>
-            </div>
-            <FaCalendarAlt size={30} />
-          </div>
+  <div className="stat-card" onClick={() => filterByStatus("Scheduled")}>
+    <div className="stat-content">
+      <h2>{count("Scheduled")}</h2>
+      <p>Scheduled Appointments</p>
+    </div>
+    <div className="icon-box scheduled">
+      <FaCalendarAlt />
+    </div>
+  </div>
 
-        </div>
+</div>
 
         {/* ===== BOTTOM SECTION ===== */}
         <div className="bottom-container">

@@ -37,70 +37,83 @@
 }
 
 /* ---------- DASHBOARD STATS ---------- */
+/* ---------- DASHBOARD STATS ---------- */
 .stats-container {
   width: 85%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
   margin-bottom: 40px;
-
-  /* Center this block */
-  align-self: center;
 }
 
-/* ---------- STAT CARD ---------- */
+/* Card shell */
 .stat-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 22px;
   position: relative;
-  padding: 22px 24px;
-  border-radius: 22px;
-  color: #ffffff;
   cursor: pointer;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 20px 40px rgba(0, 0, 0, 0.06),
+    0 6px 16px rgba(0, 0, 0, 0.04);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow:
-    0 28px 60px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 28px 60px rgba(0, 0, 0, 0.08),
+    0 10px 22px rgba(0, 0, 0, 0.06);
 }
 
-.stat-card h4 {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  opacity: 0.9;
-}
-
-.stat-card p {
-  font-size: 30px;
+/* Left content */
+.stat-content h2 {
+  font-size: 32px;
   font-weight: 700;
-  margin-top: 6px;
+  color: #0f172a;
+  margin-top: -10px;
 }
 
-/* ---------- GRADIENT THEMES ---------- */
-.confirmed {
+.stat-content p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Icon container (top-right) */
+.icon-box {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* Gradient icon themes */
+.icon-box.confirmed {
   background: linear-gradient(135deg, #34d399, #059669);
 }
 
-.cancelled {
+.icon-box.cancelled {
   background: linear-gradient(135deg, #fb7185, #be123c);
 }
 
-.upcoming {
+.icon-box.upcoming {
   background: linear-gradient(135deg, #818cf8, #4f46e5);
 }
 
-.scheduled {
+.icon-box.scheduled {
   background: linear-gradient(135deg, #fbbf24, #d97706);
 }
 
