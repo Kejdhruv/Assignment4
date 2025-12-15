@@ -5,6 +5,8 @@ The application provides a clean dashboard to view, filter, and manage patient a
 
 ---
 
+
+
 ## ✨ Features
 
 ### 📊 Dashboard Overview
@@ -110,7 +112,59 @@ npm run dev
 Frontend runs on:-
 http://localhost:5173
 
+
+
+### 📤 Sample Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "date": "2025-01-20",
+    "time": "10:30 AM",
+    "duration": 30,
+    "doctorName": "Dr. Smith",
+    "status": "Confirmed"
+  },
+  {
+    "id": 2,
+    "name": "Jane Williams",
+    "date": "2025-01-21",
+    "time": "02:00 PM",
+    "duration": 45,
+    "doctorName": "Dr. Adams",
+    "status": "Upcoming"
+  }
+] 
+
+## 🔌 API Endpoints & Query Structure
+
+The backend exposes REST APIs for fetching and updating appointment data.
+
+---
+
+### 📥 Get Appointments
+
+**Endpoint**
+**Query Parameters (Optional)**
+
+| Parameter | Type | Description |
+|--------|------|------------|
+| `date` | string | Filter appointments by date (`YYYY-MM-DD`) |
+| `status` | string | Filter appointments by status |
+
+**Example Requests**
+GET /appointments
+GET /appointments?date=2025-01-20
+GET /appointments?status=Confirmed
+GET /appointments?date=2025-01-20&status=Upcoming
  
+Update Appointment Status
+PUT /appointments/{appointment_id}/status
+**Example Requests**
+PUT /appointments/3/status?new_status=Completed
+
 
 🔐 CORS Configuration
 
@@ -130,6 +184,11 @@ allow_origins=["http://localhost:5173"]
 	•	Appointment creation & editing
 	•	Pagination for large datasets
 	•	Notifications & reminders
+
+
+
+---
+
 
 
     👤 Author
