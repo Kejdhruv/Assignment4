@@ -1,0 +1,26 @@
+.calendar {
+  margin-bottom: 20px;
+}
+
+.calendar h4 {
+  margin-bottom: 10px;
+}
+
+.calendar-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.calendar-date {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.calendar-date.selected {
+  background: #2563eb;
+  color: #ffffff;
+}

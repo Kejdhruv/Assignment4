@@ -1,5 +1,5 @@
 import React from "react";
-import "./AppointmentCard.css";
+import "./Appointment_Card.css";
 
 const AppointmentCard = ({ appointment, onStatusChange }) => {
   return (

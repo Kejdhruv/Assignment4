@@ -2,7 +2,7 @@ import React from "react";
 import "./Tabs.css";
 
 const Tabs = ({ activeTab, onTabChange }) => {
-  const tabs = ["Upcoming", "Today", "Past"];
+  const tabs = ["Upcoming", "Today", "Past" , "All"];
 
   return (
     <div className="tabs">

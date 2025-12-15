@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./EMR.css";
+import AppointmentCard from "../Components/Appointment_Card";
+import Tabs from "../Components/Tabs"
+import Calender from "../Components/Calender"
+
 const API_BASE = "http://127.0.0.1:8000";
 
 const EMR_Frontend_Assignment = () => {
   const [appointments, setAppointments] = useState([]);
+  const [allAppointments, setAllAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [activeTab, setActiveTab] = useState("All");
+  const [selectedDate, setSelectedDate] = useState(null);
 
   // -------------------------
   // INITIAL DATA FETCH
@@ -14,6 +22,7 @@ const EMR_Frontend_Assignment = () => {
       .then((res) => res.json())
       .then((data) => {
         setAppointments(data);
+        setAllAppointments(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,51 +32,95 @@ const EMR_Frontend_Assignment = () => {
   }, []);
 
   // -------------------------
-  // TEMPORARY RENDER
+  // TAB FILTERING
+  // -------------------------
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setSelectedDate(null);
+
+    const today = new Date().toISOString().split("T")[0];
+
+    if (tab === "All") {
+      setAppointments(allAppointments);
+    } else if (tab === "Today") {
+      setAppointments(allAppointments.filter((a) => a.date === today));
+    } else if (tab === "Upcoming") {
+      setAppointments(allAppointments.filter((a) => a.date > today));
+    } else if (tab === "Past") {
+      setAppointments(allAppointments.filter((a) => a.date < today));
+    }
+  };
+
+  // -------------------------
+  // CALENDAR FILTERING
+  // -------------------------
+  const handleDateSelect = (date) => {
+    setSelectedDate(date);
+    setActiveTab("");
+
+    fetch(`${API_BASE}/appointments?date=${date}`)
+      .then((res) => res.json())
+      .then((data) => setAppointments(data));
+  };
+
+  // -------------------------
+  // STATUS UPDATE
+  // -------------------------
+  const handleStatusChange = (id, newStatus) => {
+    fetch(
+      `${API_BASE}/appointments/${id}/status?new_status=${newStatus}`,
+      { method: "PUT" }
+    )
+      .then(() => fetch(`${API_BASE}/appointments`))
+      .then((res) => res.json())
+      .then((data) => {
+        setAppointments(data);
+        setAllAppointments(data);
+      });
+  };
+
+  // -------------------------
+  // LOADING STATE
   // -------------------------
   if (loading) {
     return <p style={{ padding: 20 }}>Loading appointments...</p>;
   }
 
- return (
-  <div className="emr-page">
-    <div className="emr-container">
+  return (
+    <div className="emr-page">
+      <div className="emr-container">
 
-      <div className="emr-header">
-        <h1>Appointment Management</h1>
-        <p>Schedule and manage patient appointments</p>
-      </div>
-
-      {appointments.length === 0 && (
-        <p>No appointments found.</p>
-      )}
-
-      {appointments.map((appt) => (
-        <div key={appt.id} className="appointment-card">
-          <div className="appointment-info">
-            <h3>{appt.name}</h3>
-            <p>{appt.date} • {appt.time} • {appt.duration} mins</p>
-            <p>{appt.doctorName}</p>
-          </div>
-
-          <span
-            className={`status-badge ${
-              appt.status === "Confirmed"
-                ? "status-confirmed"
-                : appt.status === "Cancelled"
-                ? "status-cancelled"
-                : appt.status === "Completed"
-                ? "status-completed"
-                : "status-upcoming"
-            }`}
-          >
-            {appt.status}
-          </span>
+        {/* Header */}
+        <div className="emr-header">
+          <h1>Appointment Management</h1>
+          <p>Schedule and manage patient appointments</p>
         </div>
-      ))}
+
+        {/* Tabs */}
+        <Tabs activeTab={activeTab} onTabChange={handleTabChange} />
+
+        {/* Calendar */}
+        <Calender
+          selectedDate={selectedDate}
+          onDateSelect={handleDateSelect}
+        />
+
+        {/* Appointment List */}
+        {appointments.length === 0 && (
+          <p>No appointments found.</p>
+        )}
+
+        {appointments.map((appt) => (
+          <AppointmentCard
+            key={appt.id}
+            appointment={appt}
+            onStatusChange={handleStatusChange}
+          />
+        ))}
+
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default EMR_Frontend_Assignment;
