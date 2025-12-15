@@ -11,9 +11,10 @@ from Data.mock_data import appointments
 def get_appointments(date=None, status=None):
  
     results = appointments
+    #Search Based on Date and Status 
     if date:
         results = [a for a in results if a["date"] == date]
-
+        
     if status:
         results = [a for a in results if a["status"] == status]
 
@@ -23,7 +24,7 @@ def get_appointments(date=None, status=None):
 
 # MUTATION: Update Status
 def update_appointment_status(appointment_id, new_status):
- 
+ #Loop for Updating the Data 
     for appointment in appointments:
         if appointment["id"] == appointment_id:
             appointment["status"] = new_status

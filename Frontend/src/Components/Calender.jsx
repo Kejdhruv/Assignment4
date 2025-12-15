@@ -9,7 +9,6 @@ const AppointmentCalendar = ({ selectedDate, onDateSelect }) => {
       <Calendar
         value={selectedDate}
         onChange={(date) => {
-          // date is a JS Date object (correct)
           onDateSelect(date);
         }}
       />

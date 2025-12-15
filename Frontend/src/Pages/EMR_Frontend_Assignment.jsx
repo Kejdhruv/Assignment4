@@ -23,9 +23,9 @@ const EMR_Frontend_Assignment = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 const todayDate = new Date().toLocaleDateString("en-CA");
 
-  // -------------------------
+
   // FETCH ALL APPOINTMENTS
-  // -------------------------
+
   useEffect(() => {
     fetch(`${API_BASE}/appointments`)
       .then((res) => res.json())
@@ -37,9 +37,9 @@ const todayDate = new Date().toLocaleDateString("en-CA");
       .catch(() => setLoading(false));
   }, []);
 
-  // -------------------------
+
   // FILTER BY STATUS / TAB / CARD
-  // -------------------------
+
   const filterByStatus = (status) => {
     setSelectedDate(null);
     setActiveFilter(status);
@@ -69,9 +69,9 @@ const todayDate = new Date().toLocaleDateString("en-CA");
   }
 };
 
-  // -------------------------
+
   // FILTER BY DATE (CALENDAR)
-  // -------------------------
+
   const handleDateSelect = (dateObj) => {
     setSelectedDate(dateObj);
     setActiveFilter("");
@@ -83,9 +83,8 @@ const todayDate = new Date().toLocaleDateString("en-CA");
       .then((data) => setAppointments(data));
   };
 
-  // -------------------------
   // STATUS UPDATE
-  // -------------------------
+
   const handleStatusChange = (id, newStatus) => {
     fetch(
       `${API_BASE}/appointments/${id}/status?new_status=${newStatus}`,
@@ -101,9 +100,9 @@ const todayDate = new Date().toLocaleDateString("en-CA");
 
   if (loading) return <p className="loading">Loading...</p>;
 
-  // -------------------------
+
   // COUNTS FOR DASHBOARD CARDS
-  // -------------------------
+
   const count = (status) =>
     allAppointments.filter(a => a.status === status).length;
 
@@ -156,10 +155,7 @@ const todayDate = new Date().toLocaleDateString("en-CA");
 
 </div>
 
-        {/* ===== BOTTOM SECTION ===== */}
         <div className="bottom-container">
-
-          {/* LEFT: CALENDAR */}
           <div className="calendar-container">
             <AppointmentCalendar
               selectedDate={selectedDate}
@@ -167,9 +163,9 @@ const todayDate = new Date().toLocaleDateString("en-CA");
             />
           </div>
 
-          {/* RIGHT: APPOINTMENTS */}
+    
+          
           <div className="appointments-container">
-
             <div className="appointments-header">
               <Tabs
   activeTab={activeFilter}
@@ -177,11 +173,9 @@ const todayDate = new Date().toLocaleDateString("en-CA");
   showAll
 />
             </div>
-
             {appointments.length === 0 && (
               <p className="empty">No appointments found.</p>
             )}
-
             {appointments.map(appt => (
               <AppointmentCard
                 key={appt.id}

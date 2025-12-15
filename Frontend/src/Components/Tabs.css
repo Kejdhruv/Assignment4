@@ -1,7 +1,6 @@
 .tabs {
   margin-bottom: 20px;
 }
-
 .tab {
   margin-right: 10px;
    padding: 8px 18px;
@@ -12,10 +11,6 @@
    font-size: 14px;
   transition: all 0.2s ease;
 }
-
-
-
-
 .tab.active {
   background: #0f172a;
   color: #ffffff;
