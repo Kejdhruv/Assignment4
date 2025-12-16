@@ -2,7 +2,7 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
-from Process.Appointment_Service import (
+from Backend.Process.Appointment_Service import (
     get_appointments,
     update_appointment_status
 )
