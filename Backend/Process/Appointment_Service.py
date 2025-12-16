@@ -3,8 +3,7 @@
 # GraphQL/AppSync behavior is simulated
 # -----------------------------------------
 
-from Data.mock_data import appointments
-
+from Backend.Data.mock_data import appointments
 
 # QUERY: Fetch Appointments
 
