@@ -1,3 +1,9 @@
+import sys
+import os
+from typing import Optional
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
@@ -9,7 +15,6 @@ from Backend.Process.Appointment_Service import (
 
 app = FastAPI(title="EMR Appointment Service")
 
-# CORS (update frontend URL after deploy)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,8 +25,8 @@ app.add_middleware(
 
 @app.get("/appointments")
 def fetch_appointments(
-    date: str | None = Query(default=None) , 
-    status: str |  None = Query(default=None)
+    date: Optional[str] = Query(default=None),
+    status: Optional[str] = Query(default=None)
 ):
     return get_appointments(date=date, status=status)
 
@@ -35,5 +40,4 @@ def change_appointment_status(
         return {"error": "Appointment not found"}
     return updated
 
-# 👇 THIS is what Vercel runs
 handler = Mangum(app)
