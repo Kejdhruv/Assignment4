@@ -20,8 +20,8 @@ app.add_middleware(
 
 @app.get("/appointments")
 def fetch_appointments(
-    date: str | None = Query(default=None),
-    status: str | None = Query(default=None)
+    date: str | None = Query(default=None) , 
+    status: str |  None = Query(default=None)
 ):
     return get_appointments(date=date, status=status)
 
