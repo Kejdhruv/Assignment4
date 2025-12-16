@@ -4,6 +4,9 @@ A modern **Electronic Medical Record (EMR) Appointment Management System** built
 The application provides a clean dashboard to view, filter, and manage patient appointments efficiently.
 
 ---
+<img width="500" height="800" alt="Screenshot 2025-12-16 at 04 48 25" src="https://github.com/user-attachments/assets/40f66070-24a9-4e51-a570-f8dc82d819ad" />
+<img width="500" height="800" alt="Screenshot 2025-12-16 at 04 48 37" src="https://github.com/user-attachments/assets/37351f7c-5aeb-4898-a35a-277d00ff557c" />
+
 
 
 
@@ -112,6 +115,58 @@ npm run dev
 Frontend runs on:-
 http://localhost:5173
 
+
+
+### 📤 Sample Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "date": "2025-01-20",
+    "time": "10:30 AM",
+    "duration": 30,
+    "doctorName": "Dr. Smith",
+    "status": "Confirmed"
+  },
+  {
+    "id": 2,
+    "name": "Jane Williams",
+    "date": "2025-01-21",
+    "time": "02:00 PM",
+    "duration": 45,
+    "doctorName": "Dr. Adams",
+    "status": "Upcoming"
+  }
+] 
+
+## 🔌 API Endpoints & Query Structure
+
+The backend exposes REST APIs for fetching and updating appointment data.
+
+---
+
+### 📥 Get Appointments
+
+**Endpoint**
+**Query Parameters (Optional)**
+
+| Parameter | Type | Description |
+|--------|------|------------|
+| `date` | string | Filter appointments by date (`YYYY-MM-DD`) |
+| `status` | string | Filter appointments by status |
+
+**Example Requests**
+GET /appointments
+GET /appointments?date=2025-01-20
+GET /appointments?status=Confirmed
+GET /appointments?date=2025-01-20&status=Upcoming
+ 
+Update Appointment Status
+PUT /appointments/{appointment_id}/status
+**Example Requests**
+PUT /appointments/3/status?new_status=Completed
 
 
 ### 📤 Sample Response
